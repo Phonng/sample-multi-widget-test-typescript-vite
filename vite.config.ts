@@ -9,11 +9,11 @@ export default defineConfig({
     outDir: 'dist',
     lib: {
       entry: {
-        page1: path.resolve(__dirname, 'src/pages/page1/page-sdk.ts'),
-        page2: path.resolve(__dirname, 'src/pages/page2/page-sdk.ts'),
-        page3: path.resolve(__dirname, 'src/pages/page3/page-sdk.ts'),
+        A: path.resolve(__dirname, 'src/pages/page1/page-sdk.ts'),
+        B: path.resolve(__dirname, 'src/pages/page2/page-sdk.ts'),
+        C: path.resolve(__dirname, 'src/pages/page3/page-sdk.ts'),
       },
-      name: 'MyLibrary',
+      name: (name) => name,
       fileName: (_, data) => {
         return `${data}.js`
       }

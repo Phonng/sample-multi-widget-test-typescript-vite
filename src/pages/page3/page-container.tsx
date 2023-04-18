@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 function PageContainer() {
-  return <h1>Page 3</h1>;
+  return <h1>Page 3</h1>
 }
 
-export default PageContainer;
+export default PageContainer
