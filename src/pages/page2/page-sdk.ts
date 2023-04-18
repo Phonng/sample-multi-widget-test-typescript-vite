@@ -23,7 +23,7 @@ class PageWidget {
 
 function app(window) {
   const sdk = new PageWidget()
-  window.PAGE2 = window.KFIN_TOUCH || {}
+  window.PAGE2 = window.PAGE2 || {}
 
   window.PAGE2.init = sdk.initPage2
   const queue = window.PAGE2.q
