@@ -13,19 +13,11 @@ export default defineConfig({
         B: path.resolve(__dirname, 'src/pages/page2/page-sdk.ts'),
         C: path.resolve(__dirname, 'src/pages/page3/page-sdk.ts'),
       },
-      name: (name) => {
-        console.log('na,me', name)
-        return name
-      },
+      name: (name) => name,
       fileName: (_, data) => {
         return `${data}.js`
       }
     },
     cleanDestDir: true
-  },
-  rollupOptions: {
-    output: {
-      name: (chunk) => `window.${chunk.name.replace('lib-', '')}`,
-    },
-  },
+  }
 })
