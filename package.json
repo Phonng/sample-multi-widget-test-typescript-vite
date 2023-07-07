@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "test": "jest",
     "preview": "vite preview",
-    "format": "git diff --name-only --diff-filter=d | grep -E 'src/.*\\.(js|jsx|json|css|md|mdx|html)$' | xargs -I {} prettier --write \"{}\"",
+    "format": "prettier --write \"src/**/*.+(ts|tsx|json|css|md|mdx|html|json)\"",
     "tslint:check": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "tslint:fix": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
     "prepare": "husky install"
