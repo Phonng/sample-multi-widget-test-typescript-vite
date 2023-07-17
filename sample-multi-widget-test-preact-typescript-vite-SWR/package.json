@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@testing-library/react": "^14.0.0",
     "preact": "^10.15.1"
   },
   "devDependencies": {
