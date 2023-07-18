@@ -20,7 +20,7 @@ export default defineConfig({
       fileName: (_, data) => {
         return `${data}.js`
       },
-      formats: ['es', 'cjs', 'umd', 'iife']
+      formats: ['es']
     },
     rollupOptions: {
       input: {
