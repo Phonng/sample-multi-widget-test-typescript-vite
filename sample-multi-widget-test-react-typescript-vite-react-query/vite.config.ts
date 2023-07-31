@@ -10,6 +10,7 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     outDir: 'dist',
+    //Specialized option for building JavaScript libraries: ES modules, CommonJS modules, dynamic import polyfill
     lib: {
       entry: {
         A: path.resolve(__dirname, 'src/pages/page1/page-sdk.ts'),
@@ -22,6 +23,7 @@ export default defineConfig({
       },
       formats: ['es']
     },
+    //General-purpose option for configuring Rollup: Minification, output format, etc.
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
