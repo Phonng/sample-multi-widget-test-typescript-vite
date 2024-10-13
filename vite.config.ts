@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
     outDir: 'dist',
     //Specialized option for building JavaScript libraries: ES modules, CommonJS modules, dynamic import polyfill
     lib: {
