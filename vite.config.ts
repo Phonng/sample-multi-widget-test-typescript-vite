@@ -3,6 +3,14 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import { fileURLToPath, URL } from "url";
 
+
+const toSnakeCase = (str: string) => {
+  return str
+    .replace(/([A-Z])/g, '_$1')
+    .toLowerCase()
+    .replace(/^_/, '')
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -10,32 +18,26 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: false,
     outDir: 'dist',
-    //Specialized option for building JavaScript libraries: ES modules, CommonJS modules, dynamic import polyfill
-    lib: {
-      entry: {
-        A: path.resolve(__dirname, 'src/pages/page1/page-sdk.ts'),
-        B: path.resolve(__dirname, 'src/pages/page2/page-sdk.ts'),
-        C: path.resolve(__dirname, 'src/pages/page3/page-sdk.ts'),
-      },
-      name: (name) => name,
-      fileName: (_, data) => {
-        return `${data}.js`
-      },
-      formats: ['es']
-    },
+    modulePreload: { polyfill: false },
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 500,
+    minify: 'terser',
+
     //General-purpose option for configuring Rollup: Minification, output format, etc.
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        // NOTE: add lib to inputRollUpOption is a workaround 
-        // because when using this option will build all file lib into 1 file js
         A: path.resolve(__dirname, 'src/pages/page1/page-sdk.ts'),
         B: path.resolve(__dirname, 'src/pages/page2/page-sdk.ts'),
         C: path.resolve(__dirname, 'src/pages/page3/page-sdk.ts'),
       },
+      output: {
+        format: 'es',
+        entryFileNames: ({ name }) => `${toSnakeCase(name)}.js`,
+        manualChunks: undefined,
+        inlineDynamicImports: false,
+      },
     },
     cleanDestDir: true,
-    minify: true
   },
   define: {
     'process.env.NODE_ENV': '"production"'
